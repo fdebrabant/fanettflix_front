@@ -1,21 +1,30 @@
-import React, { useContext } from 'react'
+import React, { useContext } from 'react';
 import styled from 'styled-components';
-import { MovieContext } from '../contexts/MovieContextProvider';
+import { MoviesContext } from '../contexts/MoviesContextProvider';
+import Poster from '../component/Poster';
 
-// const Div = styled.div`
-//     width: 100%;
-//     height: 200px;
-//     background-color: aquamarine;
-// `;
+const PostersList = styled.div`
+display: flex;
+justify-content: space-between;
+flex-wrap: wrap;
+
+`;
 
 export default function MovieList() {
-    const { movie } = useContext(MovieContext);
+    const { movies } = useContext(MoviesContext);
     return (
-        <div>{
-                movie.map((el) => {
-                    return <img src={`${process.env.REACT_APP_BACKEND_STATIC_URL}${el.poster}`} alt={el.title} />
+        <PostersList>
+            {
+                movies.map((el) => {
+                    return <Poster 
+                    img={`${process.env.REACT_APP_BACKEND_STATIC_URL}${el.poster}`} 
+                    alt={el.title} 
+                    key={el.id}
+                    id={el.id}
+                    movie={el}
+                    />
                 })
             }          
-        </div>
+        </PostersList>
     )
 }

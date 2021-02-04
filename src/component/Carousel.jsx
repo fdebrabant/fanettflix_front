@@ -1,16 +1,25 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useContext } from 'react';
+import MatuiCarousel from 'react-material-ui-carousel';
+import {Paper} from '@material-ui/core';
+import { MoviesContext } from '../contexts/MoviesContextProvider';
 
-const Div = styled.div`
-    width: 100%;
-    height: 200px;
-    background-color: aquamarine;
-`;
-
-export default function Carousel() {
+function Item({ item }) {
+    const imgUrl = "http://localhost:8080/" + item.fullscreen;
     return (
-        <Div>
-            
-        </Div>
+        <Paper key={ item.id }>
+            <img className="coco" src={ imgUrl } alt={ item.title }/>
+        </Paper>
     )
 }
+
+function Carousel({ movieList }) {
+    const { movies } = useContext(MoviesContext);
+    return (
+        <MatuiCarousel>
+            {
+                movies.map( (item, i) => <Item key={i} item={item} /> )
+            }
+        </MatuiCarousel>
+    )
+}
+export default Carousel;

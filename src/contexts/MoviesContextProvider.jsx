@@ -1,10 +1,10 @@
 import React, { useEffect, useState, createContext } from 'react';
 import axios from 'axios';
 
-export const MovieContext = createContext(null);
+export const MoviesContext = createContext(null);
 
 export default function UserContextProvider({ children }) {
-  const [movie, setMovie] = useState([]);
+  const [movies, setMovies] = useState([]);
 
   useEffect(() => {
     const url = process.env.REACT_APP_BACKEND_URL;
@@ -12,7 +12,7 @@ export default function UserContextProvider({ children }) {
       .get(`${url}api/movies`)
       .then((response) => response.data)
       .then((data) => {
-        setMovie(data);
+        setMovies(data);
         console.log(data);
       })
       .catch((err) => {
@@ -26,9 +26,9 @@ export default function UserContextProvider({ children }) {
       });
   }, []);
   return (
-    <MovieContext.Provider value={{ movie, setMovie }}>
+    <MoviesContext.Provider value={{ movies, setMovies }}>
       {children}
-    </MovieContext.Provider>
+    </MoviesContext.Provider>
   );
 }
 
