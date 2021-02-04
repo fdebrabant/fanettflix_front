@@ -13,7 +13,6 @@ export default function UserContextProvider({ children }) {
       .then((response) => response.data)
       .then((data) => {
         setMovies(data);
-        console.log(data);
       })
       .catch((err) => {
         let message;

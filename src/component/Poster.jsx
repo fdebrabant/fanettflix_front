@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
-// import { Link } from 'react-router-dom';
-// import PlayerMovie from '../Views/PlayerMovie';
 
 const PosterMovie = styled.img`
     width: 200px;
@@ -15,8 +13,9 @@ const PosterMovie = styled.img`
 } 
 `;
 
-export default function Poster({ img, title, movie, id }) {
+export default function Poster({ img, title, id }) {
     const history = useHistory();
+    
     function handleClick() {
         history.push("/movie/" + id);
     }

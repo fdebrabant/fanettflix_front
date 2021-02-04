@@ -1,6 +1,7 @@
 import React, { useEffect, useState,} from 'react';
 import axios from 'axios';
 import MovieDetails from '../component/MovieDetails';
+import VideoPlayer from '../component/VideoPlayer';
 
 export default function PlayerMovie(options) {
     const [movie, setMovie] = useState([]);
@@ -19,18 +20,22 @@ export default function PlayerMovie(options) {
           })
           .catch((err) => {
             let message;
-            if (err.response.status === 500) {
+            if (err?.response.status === 500) {
               message = "erreur serveur";
             } else {
-              message = err.response.data.errorMessage;
+              message = err?.response?.data.errorMessage;
             }
             console.log(message);
           });
       }, [movieId]);
 
-      console.log(movie)
+      console.log(movie, process.env.REACT_APP_BACKEND_STATIC_URL)
     return (
         <div>
+            <VideoPlayer 
+                src={`${process.env.REACT_APP_BACKEND_STATIC_URL}${movie.video}`}
+                poster={`${process.env.REACT_APP_BACKEND_STATIC_URL}${movie.fullscreen}`} 
+            />
             <MovieDetails 
                 title={movie.title} 
                 year={movie.year} 
