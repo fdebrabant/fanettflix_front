@@ -8,9 +8,10 @@ const PosterMovie = styled.img`
     filter: grayscale(70%);
 
     :hover {
-    transition: all 1s ease-out;
-    filter: grayscale(0);
-} 
+        transition: all 1s ease-out;
+        filter: grayscale(0);
+        cursor: pointer;
+    } 
 `;
 
 export default function Poster({ img, title, id }) {

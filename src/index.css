@@ -43,3 +43,7 @@ body {
   margin-bottom: -4px;
   border-radius: 3px;
 }
+
+.player {
+  margin:auto;
+}

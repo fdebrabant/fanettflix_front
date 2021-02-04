@@ -6,7 +6,7 @@ import VideoPlayer from '../component/VideoPlayer';
 export default function PlayerMovie(options) {
     const [movie, setMovie] = useState([]);
     const movieId = options?.match?.params?.id;
-    if (!movieId && !Number.isInteger(parseInt(movieId))) {
+    if (!movieId || !Number.isInteger(parseInt(movieId))) {
         // return route 404
     }
 

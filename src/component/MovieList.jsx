@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { MoviesContext } from '../contexts/MoviesContextProvider';
 import Poster from '../component/Poster';
 
 const PostersList = styled.div`
@@ -10,8 +9,7 @@ flex-wrap: wrap;
 
 `;
 
-export default function MovieList() {
-    const { movies } = useContext(MoviesContext);
+export default function MovieList({ movies }) {
     return (
         <PostersList>
             {

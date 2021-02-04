@@ -19,11 +19,10 @@ class VideoPlayer extends Component {
               {
                 this?.state?.video?.src ?
                   <Player
+                      className="player"
                       controls={true}
                       src={this?.state?.video?.src}
                       poster={this?.state?.video?.poster}
-                      width="720"
-                      height="420"
                   /> : ''
               }
           </div>
